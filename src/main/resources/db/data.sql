@@ -1,0 +1,2 @@
+insert into user_tb(user_id, password, email, user_name) values('study', '1234', 'study@study.com', '공부');
+insert into user_tb(user_id, password, email, user_name) values('test', '1234', 'test@test.com', '시험');

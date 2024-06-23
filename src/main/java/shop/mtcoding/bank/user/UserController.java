@@ -31,9 +31,20 @@ public class UserController {
         return "redirect:/login-form";
     }
 
+    // 로그인 폼을 보여주는 GET 요청
     @GetMapping("/login-form")
     public String loginForm(){
         return "user/login-form";
+    }
+
+    // 로그인 요청을 처리하는 POST 요청
+    @PostMapping("/login")
+    public String login(UserRequest.LoginDTO reqDTO){
+
+        // userService의 login 메서드 호출
+        userService.login(reqDTO);
+
+        return "redirect:/account/list";
     }
 
     @GetMapping("/logout")
