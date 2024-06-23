@@ -29,7 +29,7 @@ public class UserService {
     // 사용자가 로그인 요청을 할 때 호출되는 메서드입니다.
     public User login(UserRequest.LoginDTO reqDTO) {
         // 사용자 ID로 사용자 조회
-        User user = userQueryRepository.findUserIdAndPasswordV1(reqDTO.getUserId());
+        User user = userQueryRepository.findUserIdAndPasswordV2(reqDTO.getUserId());
         if (user == null) throw new RuntimeException("존재하지 않는 ID입니다.");
 
         // 비밀번호 검증

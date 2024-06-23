@@ -15,11 +15,27 @@ public class UserQueryRepositoryTest {
     @Test
     public void findByIdAndPasswordV1_Test(){
         // given
-        String id = "stud";
+        String id = "study";
         String pw = "1234";
 
         // when
         User user = userQueryRepository.findUserIdAndPasswordV1(id);
+
+        // then
+        System.out.println("#####ID: " + user.getUserId());
+        System.out.println("#####Password: " + user.getPassword());
+        System.out.println("#####Email: " + user.getEmail());
+        System.out.println("#####UserName: " + user.getUserName());
+    }
+
+    @Test
+    public void findByIdAndPasswordV2_Test(){
+        // given
+        String id = "study";
+        String pw = "1234";
+
+        // when
+        User user = userQueryRepository.findUserIdAndPasswordV2(id);
 
         // then
         System.out.println("#####ID: " + user.getUserId());
