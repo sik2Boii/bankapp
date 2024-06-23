@@ -33,10 +33,25 @@ public class UserQueryRepository {
     }
 
     // 네이티브 쿼리로 JPA를 사용하여 로그인 구현하기
-    public User findUserIdAndPasswordV2(String userId){
-        // 네이티브 쿼리를 사용하여 user_tb 테이블에서 user_id와 password를 조회합니다.
+    public User findUserIdAndPasswordV2(String userId) {
+        // 네이티브 쿼리를 사용하여 user_tb 테이블에서 user_id에 해당하는 전체 User 객체를 조회합니다.
         Query query = em.createNativeQuery("select * from user_tb where user_id=?", User.class);
         query.setParameter(1, userId);
+
+        try {
+            // User 클래스에 디폴트 생성자가 있어야 Hibernate가 new를 통해 객체를 생성하여 파싱해줍니다.
+            User user = (User) query.getSingleResult();
+            return user;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    // JPQL을 사용하여 로그인 구현
+    public User findUserIdAndPasswordV3(String userId) {
+        // JPQL을 사용하여 User 엔티티에서 userId에 해당하는 전체 User 객체를 조회합니다.
+        Query query = em.createQuery("select u from User u where u.userId=:userId", User.class);
+        query.setParameter("userId", userId);
 
         try {
             // User 클래스에 디폴트 생성자가 있어야 Hibernate가 new를 통해 객체를 생성하여 파싱해줍니다.

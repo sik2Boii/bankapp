@@ -43,4 +43,20 @@ public class UserQueryRepositoryTest {
         System.out.println("#####Email: " + user.getEmail());
         System.out.println("#####UserName: " + user.getUserName());
     }
+
+    @Test
+    public void findByIdAndPasswordV3_Test(){
+        // given
+        String id = "study";
+        String pw = "1234";
+
+        // when
+        User user = userQueryRepository.findUserIdAndPasswordV3(id);
+
+        // then
+        System.out.println("#####ID: " + user.getUserId());
+        System.out.println("#####Password: " + user.getPassword());
+        System.out.println("#####Email: " + user.getEmail());
+        System.out.println("#####UserName: " + user.getUserName());
+    }
 }
